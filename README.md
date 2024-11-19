@@ -1,2 +1,75 @@
 # airia_python_examples
 Example Python for Airia.ai
+
+# Airia Pipeline Execution
+call_airia_pipeline.py  
+  
+## Description
+This Python script demonstrates how to execute an Airia Pipeline using the Airia API. It sends a POST request to the Airia Pipeline Execution endpoint with user input and receives the pipeline output.
+
+## Features
+- Executes an Airia Pipeline via API
+- Sends user input to the pipeline
+- Supports synchronous execution (can be modified for asynchronous)
+- Uses API key authentication
+
+# System Information Retriever
+## Description
+This Python script retrieves and displays various system information details about the environment where the code is executed. It provides a comprehensive overview of the system, including hardware, OS, and current runtime details.
+  
+## Features
+- Retrieves system name, node name, release, version, and machine type
+- Displays kernel version
+- Shows user ID, group ID, process ID, and parent process ID
+- Reports CPU count
+- Provides system load averages for 1, 5, and 15 minutes
+
+# Plot Generator and Encoder
+## Description
+This Python script generates a sine wave plot using Matplotlib, saves it as a PNG image, and then encodes the image to base64 format. This encoded image can be easily transmitted or embedded in other applications, such as web pages or documents.
+  
+## Features
+- Generates a sine wave plot
+- Saves the plot as a PNG image in memory
+- Encodes the image to base64 format
+- Outputs the base64-encoded string
+
+# Wolfram Alpha API Caller
+## Description
+This Python script demonstrates how to make a call to the Wolfram Alpha API. It sends a user-provided query to the Wolfram Alpha LLM API and retrieves the response.
+  
+## Features
+- Sends a user query to the Wolfram Alpha LLM API
+- Retrieves and outputs the API response
+- Simple and straightforward implementation
+  
+## Setup
+Before running the script, you need to obtain a Wolfram Alpha API key:
+- Go to the Wolfram Alpha Developer Portal.
+- Sign up for an account or log in if you already have one.
+- Create a new app to get an AppID (API key).
+  
+## Usage
+- Save the script to a file (e.g., wolfram_alpha_api_caller.py).
+- Replace the placeholder in the key variable with your actual Wolfram Alpha API key:
+```key = "Your-Wolfram-Alpha-API-Key-Here"```
+  
+# Nasdaq 100 Stock Analysis Tool
+## Description
+This Python script analyzes Nasdaq 100 stocks for technical formations including golden cross, death cross, and Bollinger Band crosses. It uses the yfinance library to fetch historical stock data and pandas for data manipulation and analysis.
+  
+## Features
+- Fetches historical data for Nasdaq 100 stocks
+- Identifies Golden Cross and Death Cross formations
+- Detects crosses of upper and lower Bollinger Bands
+- Provides a summary of recent technical formations for each stock
+
+## How it Works
+- The script defines a list of Nasdaq 100 stocks.
+- For each stock, it downloads the last year of historical data using yfinance.
+- It then checks for the following technical formations:
+-- Golden Cross (50-day SMA crosses above 200-day SMA)
+-- Death Cross (50-day SMA crosses below 200-day SMA)
+-- Upper Bollinger Band Cross
+-- Lower Bollinger Band Cross
+- The results are compiled into a DataFrame and printed.
