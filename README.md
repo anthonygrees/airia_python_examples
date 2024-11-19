@@ -74,6 +74,8 @@ This Python script analyzes Nasdaq 100 stocks for technical formations including
 -- Lower Bollinger Band Cross
 - The results are compiled into a DataFrame and printed.
 
+# Scraper Folder
+  
 # URL Content Type Detector
 ## Description
 This Python script is designed to detect the content type of a given URL. It's primarily used to determine whether the URL points to a file or a webpage, which can then be used to decide which scraper to call (e.g., a file downloader-scraper or a webpage scraper).  
