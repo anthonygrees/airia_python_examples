@@ -1,0 +1,46 @@
+name: Airia Code Scanner
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+  repository_dispatch:
+    types: [airia-scan-requested]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Pull Scanner Image
+        run: docker pull airia-code-scanner:latest
+
+      - name: Create scan output directory
+        run: mkdir -p ${{ github.workspace }}/scan-output
+
+      - name: Run Code Scanner
+        run: |
+          docker run --rm \
+            --user $(id -u):$(id -g) \
+            -e REPOSITORY="${{ github.repository }}" \
+            -e BRANCH="${{ github.ref_name }}" \
+            -e COMMIT_SHA="${{ github.sha }}" \
+            -e EXECUTION_ID="${{ github.event.client_payload.executionId }}" \
+            -e AIRIA_API_URL="${{ secrets.AIRIA_API_URL }}" \
+            -e AIRIA_API_TOKEN="${{ secrets.AIRIA_API_TOKEN }}" \
+            -v "${{ github.workspace }}:/github/workspace:ro" \
+            -v "${{ github.workspace }}/scan-output:/output:rw" \
+            airia-code-scanner:latest
+        # Optional: Increase timeouts for very large repositories
+        # env:
+        #   GITLEAKS_TIMEOUT: 600
+        #   NAIVE_TIMEOUT: 600
+
+      - name: Upload Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-results
+          path: scan-output/scan-results.json
