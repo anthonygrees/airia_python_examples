@@ -1,9 +1,12 @@
 name: Airia Code Scanner
 
 on:
+  # Run on pushes to main branches
   push:
     branches: [main, develop]
+  # Run on pull requests
   pull_request:
+  # Allow manual trigger from Airia Platform
   repository_dispatch:
     types: [airia-scan-requested]
 
@@ -13,13 +16,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Pull Scanner Image
-        run: docker pull airia-code-scanner:latest
-
+        run: docker pull airiadevops305/airia-code-scanner:latest
       - name: Create scan output directory
         run: mkdir -p ${{ github.workspace }}/scan-output
-
       - name: Run Code Scanner
         run: |
           docker run --rm \
@@ -32,12 +32,7 @@ jobs:
             -e AIRIA_API_TOKEN="${{ secrets.AIRIA_API_TOKEN }}" \
             -v "${{ github.workspace }}:/github/workspace:ro" \
             -v "${{ github.workspace }}/scan-output:/output:rw" \
-            airia-code-scanner:latest
-        # Optional: Increase timeouts for very large repositories
-        # env:
-        #   GITLEAKS_TIMEOUT: 600
-        #   NAIVE_TIMEOUT: 600
-
+            airiadevops305/airia-code-scanner:latest
       - name: Upload Results
         if: always()
         uses: actions/upload-artifact@v4
