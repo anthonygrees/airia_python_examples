@@ -4,9 +4,8 @@ Example Python for Airia.ai
 You can find other great examples from the APAC team here:
  - [Dylan's Python Examples](https://github.com/ReevesyD/airia_python_examples)
  - [Alyssa's Metrics Examples](https://github.com/alyssagiuliano/airia_python_examples/blob/main/airia_metrics_apis/api-metrics-endpoints.md)
- - - 
-
   
+   
 # Airia Pipeline Execution
 call_airia_pipeline.py  
   
