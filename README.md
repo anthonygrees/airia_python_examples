@@ -1,5 +1,5 @@
 # airia_python_examples
-Example Python for Airia.ai.
+Example Python for Airia.ai
   
 You can find other great examples from the APAC team here:
  - [Dylan's Python Examples](https://github.com/ReevesyD/airia_python_examples)
