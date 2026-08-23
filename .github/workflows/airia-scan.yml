@@ -1,6 +1,8 @@
 name: Airia Code Scanner
 
 on:
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
   # Run on pushes to main branches
   push:
     branches: [main, develop]
